@@ -1,0 +1,14 @@
+.navBar {
+    background-color: #7459AE;
+    text-align: center;
+    font-family: cursive;
+    box-shadow: 2px 1px 12px #888888;
+    border-radius: 0 0 0.5rem 0.5rem;
+}
+.navbar-brand {
+    color: white;
+    font-size: 1.9rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 0.5rem 0;
+}

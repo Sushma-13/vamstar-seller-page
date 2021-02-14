@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
+import Header from './components/header/Header';
+import Seller from './components/seller/Seller'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      heading: "Sellers Info",
+      sellerDetails: null
+    };
+  }
+
+  componentDidMount() {
+    fetch('mockdata.json', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ sellerDetails: data });
+      });
+  }
+
+  render() {
+    return (<React.Fragment>
+      <Header heading={this.state.heading} />
+      {this.state.sellerDetails && <Seller details={this.state.sellerDetails} />}
+    </React.Fragment>);
+  }
 }
-
 export default App;
